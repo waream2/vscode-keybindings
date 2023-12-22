@@ -1,0 +1,137 @@
+/*
+An opinionated list of key bindings for using VSCode without a mouse.
+These keybindings revolve around navigation, with 'i', 'j', 'k', 'l' as the core navigational keys.
+Command, Option, and Control act as modifiers.
+This is a personalized setup designed to minimize hand movement and keep fingers in a natural position.
+*/
+
+[
+	// Shortcut for quick console logging with location context. For example, if you used it on the line below, the printout would be:
+	// "keybindings.json, Line 10: <whatever you logged>". This is useful for debugging javascript.
+	{
+			"key": "ctrl+shift+l",
+			"command": "editor.action.insertSnippet",
+			"when": "editorTextFocus",
+			"args": {
+					"snippet": "console.log('${TM_FILENAME_BASE}, Line ${TM_LINE_NUMBER}:', ${TM_SELECTED_TEXT}$1)$2;"
+			}
+	},
+
+	// Basic Navigation: Moving cursor one space/character at a time
+	{
+			"key": "cmd+i", // Move cursor up
+			"command": "cursorUp",
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+l", // Move cursor right
+			"command": "cursorRight",
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+j", // Move cursor left
+			"command": "cursorLeft",
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+k", // Move cursor down
+			"command": "cursorDown",
+			"when": "textInputFocus"
+	},
+
+	// Navigation with Text Selection
+	{
+			"key": "cmd+shift+i", // Select text while moving up
+			"command": "cursorMove",
+			"args": {"to": "up", "by": "line", "select": true},
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+shift+k", // Select text while moving down
+			"command": "cursorMove",
+			"args": {"to": "down", "by": "line", "select": true},
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+shift+j", // Select text while moving left
+			"command": "cursorMove",
+			"args": {"to": "left", "by": "line", "select": true},
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+shift+l", // Select text while moving right
+			"command": "cursorMove",
+			"args": {"to": "right", "by": "line", "select": true},
+			"when": "textInputFocus"
+	},
+
+	// Switching Between Editor Tabs
+	{
+			"key": "ctrl+alt+j", // Move to previous editor tab
+			"command": "workbench.action.previousEditor"
+	},
+	{
+			"key": "ctrl+alt+l", // Move to next editor tab
+			"command": "workbench.action.nextEditor"
+	},
+
+	// Navigation: Moving multiple lines or characters at a time
+	{
+			"key": "cmd+alt+i", // Move up 5 lines
+			"command": "cursorMove",
+			"args": {"to": "up", "by": "line", "value": 5}
+	},
+	{
+			"key": "cmd+alt+k", // Move down 5 lines
+			"command": "cursorMove",
+			"args": {"to": "down", "by": "line", "value": 5}
+	},
+	{
+			"key": "cmd+alt+j", // Move left 5 characters
+			"command": "cursorMove",
+			"args": {"to": "left", "by": "character", "value": 5}
+	},
+	{
+			"key": "cmd+alt+l", // Move right 5 characters
+			"command": "cursorMove",
+			"args": {"to": "right", "by": "character", "value": 5}
+	},
+
+	// Selection while navigating multiple characters
+	{
+			"key": "cmd+shift+alt+j", // Select 5 characters to the left
+			"command": "cursorMove",
+			"args": {"to": "left", "by": "character", "value": 5, "select": true},
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+shift+alt+l", // Select 5 characters to the right
+			"command": "cursorMove",
+			"args": {"to": "right", "by": "character", "value": 5, "select": true},
+			"when": "textInputFocus"
+	},
+
+	// Code Inspection and Definition Lookup
+	{
+			"key": "cmd+u", // Show code hover information
+			"command": "editor.action.showHover",
+			"when": "editorTextFocus"
+	},
+	{
+			"key": "cmd+u cmd+u", // Go to definition
+			"command": "editor.action.revealDefinition",
+			"when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+	},
+
+	// Navigation to Start or End of the Line With Selection
+	{
+			"key": "cmd+alt+ctrl+j", // Move cursor to the beginning of the line
+			"command": "cursorHomeSelect",
+			"when": "textInputFocus"
+	},
+	{
+			"key": "cmd+alt+ctrl+l", // Move cursor to the end of the line
+			"command": "cursorEndSelect",
+			"when": "textInputFocus"
+	}
+]
